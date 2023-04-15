@@ -1,0 +1,26 @@
+basePath: /
+host: localhost:8087
+info:
+  contact:
+    email: togi.mare@gmail.com
+    name: API Support
+    url: http://www.swagger.io/support
+  description: |-
+    Documentation MyGram using Gin Framework
+    inorder to use this api there bearer token which some of function are needed
+    First you need regis and login
+    Then Click "Authorize" at right and there pop-up will be appear and input your token and it will reveal true token e.g "Bearer e4udqw923....."
+    Finally you can use some of function that already state before
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: "API Documentation\tMyGram"
+  version: "0.1"
+paths: {}
+securityDefinitions:
+  Bearer:
+    description: Type "Bearer" followed by a space and JWT token.
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"
