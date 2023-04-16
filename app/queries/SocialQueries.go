@@ -15,6 +15,17 @@ import (
 
 // Authorization First
 
+// MyGram Socials godoc
+// @Summary MyGram Function Social Media
+// @Description MyGram Social Media function for check one status of a user without login known as incognito
+// @Tags SocialQueries
+// @Consume ({mpfd, json})
+// @Produce json
+// @Param ID formData int true "Social Media ID it means what iterations are you looking for"
+// @Description
+// @Success 302
+// @Failure 404
+// @Router /socials/{ID} [get]
 func GetStatus(ResponseContext *gin.Context) {
 	DB, _ := database.Connect()
 	// 	// If Model going to be Brand Twitter then its easy then if it Brand Instagram i need to authorize but technically
@@ -37,6 +48,16 @@ func GetStatus(ResponseContext *gin.Context) {
 	}
 }
 
+// MyGram Socials godoc
+// @Summary MyGram Function Social Media
+// @Description MyGram Social Media function for check all user status who been registered without login known as incognito
+// @Tags SocialQueries
+// @Consume ({mpfd, json})
+// @Produce json
+// @Description
+// @Success 302
+// @Failure 404
+// @Router /socials/ [get]
 func GetStatusAll(ResponseContext *gin.Context) {
 	DB, _ := database.Connect()
 	// 	// If Model going to be Brand Twitter then its easy then if it Brand Instagram i need to authorize but technically
@@ -57,6 +78,19 @@ func GetStatusAll(ResponseContext *gin.Context) {
 		})
 	}
 }
+
+// MyGram Socials godoc
+// @Summary MyGram Function Social Media
+// @Description MyGram Social Media function for Create User but need to login if this user are really real which user have been authorize
+// @Tags SocialQueries
+// @Consume ({mpfd, json})
+// @Produce json
+// @Param Name formData string true "What your name in this social accounts should be"
+// @Param LinkURL formData string true "This Link URL your input will be combine your name and this style known use as LinkedIn User Link"
+// @Description
+// @Success 201
+// @Failure 400
+// @Router /socials/Add [post]
 
 func CreateSocialMedia(ResponseContext *gin.Context) {
 	Userdata := ResponseContext.MustGet("UserData").(jwt.MapClaims)
@@ -104,6 +138,18 @@ func CreateSocialMedia(ResponseContext *gin.Context) {
 	}
 }
 
+// MyGram Socials godoc
+// @Summary MyGram Function Social Media
+// @Description MyGram Social Media function for Update of a user but needed as Authorization and Authorization in order to do so
+// @Tags SocialQueries
+// @Consume ({mpfd, json})
+// @Produce json
+// @Param Name formData string true "What your name in this social accounts should be"
+// @Param LinkURL formData string true "This Link URL your input will be combine your name and this style known use as LinkedIn User Link"
+// @Success 202
+// @Failure 400
+// @Router /socials/Edit/{ID} [put]
+
 func UpdateSocialMedia(ResponseContext *gin.Context) {
 	Userdata := ResponseContext.MustGet("UserData").(jwt.MapClaims)
 	DB, _ := database.Connect()
@@ -141,6 +187,18 @@ func UpdateSocialMedia(ResponseContext *gin.Context) {
 		})
 	}
 }
+
+// MyGram Socials godoc
+// @Summary MyGram Function Social Media
+// @Description MyGram Social Media function for Delete of a user
+// @Tags SocialQueries
+// @Consume ({mpfd, json})
+// @Produce json
+// @Param ID formData int true "Social Media ID it means what iterations are you looking for"
+// @Description
+// @Success 202
+// @Failure 400
+// @Router /socials/Delete/{ID} [delete]
 
 func DeleteSocialMedia(ResponseContext *gin.Context) {
 	Userdata := ResponseContext.MustGet("UserData").(jwt.MapClaims)

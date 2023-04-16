@@ -10,19 +10,20 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+const APP = "application/json"
+
 // MyGram User Registration godoc
 // @Summary User Registration
 // @Description Well Obviously it User Registration
-// @Tags tags
+// @Tags UserQueries
 // @Consume ({mpfd, json})
 // @Produce json
 // @Param email formData string true "Your Email address registered"
 // @Param password formData string true "Your password registered"
-// @Success 202 {object} response.Response
-// @Failure 400 {object} response.Response
-// @Router users/register
-const APP = "application/json"
-
+// @Success 201
+// @Found 302
+// @Failure 400
+// @Router /users/register [post]
 func Registered(ResponseContext *gin.Context) {
 	DB, err := database.Connect()
 	if err != nil {
@@ -72,6 +73,17 @@ func Registered(ResponseContext *gin.Context) {
 	}
 }
 
+// MyGram User Registration godoc
+// @Summary User Login
+// @Description User Login for user who are registered
+// @Tags UserQueries
+// @Consume ({mpfd, json})
+// @Produce json
+// @Param email formData string true "Your Email are needed in order to login"
+// @Param password formData string true "Your password are needed in order to login"
+// @Success 202
+// @Failure 400
+// @Router /users/login [post]
 func UserLogged(ResponseContext *gin.Context) {
 	DB, err := database.Connect()
 	if err != nil {
