@@ -16,7 +16,129 @@
     },
     "host": "localhost:8087",
     "basePath": "/",
-    "paths": {},
+    "paths": {
+        "/socials/": {
+            "get": {
+                "description": "MyGram Social Media function for check all user status who been registered without login known as incognito\n",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "SocialQueries"
+                ],
+                "summary": "MyGram Function Social Media",
+                "responses": {
+                    "302": {
+                        "description": "Found"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/socials/{ID}": {
+            "get": {
+                "description": "MyGram Social Media function for check one status of a user without login known as incognito\n",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "SocialQueries"
+                ],
+                "summary": "MyGram Function Social Media",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Social Media ID it means what iterations are you looking for",
+                        "name": "ID",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "302": {
+                        "description": "Found"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/users/login": {
+            "post": {
+                "description": "User Login for user who are registered",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "UserQueries"
+                ],
+                "summary": "User Login",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Your Email are needed in order to login",
+                        "name": "email",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Your password are needed in order to login",
+                        "name": "password",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "202": {
+                        "description": "Accepted"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    }
+                }
+            }
+        },
+        "/users/register": {
+            "post": {
+                "description": "Well Obviously it User Registration",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "UserQueries"
+                ],
+                "summary": "User Registration",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Your Email address registered",
+                        "name": "email",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Your password registered",
+                        "name": "password",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    }
+                }
+            }
+        }
+    },
     "securityDefinitions": {
         "Bearer": {
             "description": "Type \"Bearer\" followed by a space and JWT token.",

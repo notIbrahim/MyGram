@@ -16,7 +16,89 @@ info:
     url: http://www.apache.org/licenses/LICENSE-2.0.html
   title: "API Documentation\tMyGram"
   version: "0.1"
-paths: {}
+paths:
+  /socials/:
+    get:
+      description: |
+        MyGram Social Media function for check all user status who been registered without login known as incognito
+      produces:
+      - application/json
+      responses:
+        "302":
+          description: Found
+        "404":
+          description: Not Found
+      summary: MyGram Function Social Media
+      tags:
+      - SocialQueries
+  /socials/{ID}:
+    get:
+      description: |
+        MyGram Social Media function for check one status of a user without login known as incognito
+      parameters:
+      - description: Social Media ID it means what iterations are you looking for
+        in: formData
+        name: ID
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "302":
+          description: Found
+        "404":
+          description: Not Found
+      summary: MyGram Function Social Media
+      tags:
+      - SocialQueries
+  /users/login:
+    post:
+      description: User Login for user who are registered
+      parameters:
+      - description: Your Email are needed in order to login
+        in: formData
+        name: email
+        required: true
+        type: string
+      - description: Your password are needed in order to login
+        in: formData
+        name: password
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "202":
+          description: Accepted
+        "400":
+          description: Bad Request
+      summary: User Login
+      tags:
+      - UserQueries
+  /users/register:
+    post:
+      description: Well Obviously it User Registration
+      parameters:
+      - description: Your Email address registered
+        in: formData
+        name: email
+        required: true
+        type: string
+      - description: Your password registered
+        in: formData
+        name: password
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+        "400":
+          description: Bad Request
+      summary: User Registration
+      tags:
+      - UserQueries
 securityDefinitions:
   Bearer:
     description: Type "Bearer" followed by a space and JWT token.
